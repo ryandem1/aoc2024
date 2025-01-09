@@ -5,21 +5,16 @@ import (
 	"math"
 	"sort"
 	"strconv"
-	"strings"
 )
 
 
 // parseLeftAndRightList will parse the left and right list of
 // location IDs from the puzzle input.
 func parseLeftAndRightList(puzzleInputName string) ([]int, []int, error) {
-	puzzleInput, err := GetPuzzleInput(puzzleInputName)
+	puzzleInputLines, err := GetPuzzleInputByLines(puzzleInputName)
 	if err != nil {
 		return nil, nil, err
 	}
-
-	puzzleInputLines := strings.Split(
-		strings.Trim(puzzleInput, "\n"), "\n",
-	)
 
 	leftList := make([]int, len(puzzleInputLines))
 	rightList := make([]int, len(puzzleInputLines))

@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -42,6 +43,21 @@ func GetPuzzleInput(fileName string) (string, error) {
 	}
 
 	return fileContent, nil
+}
+
+// GetPuzzleInputByLines will return the puzzle input as a list of string lines.
+// End-of-file and beginning-of-file newlines will NOT be returned.
+func GetPuzzleInputByLines(fileName string) ([]string, error) {
+	puzzleInput, err  := GetPuzzleInput(fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	puzzleInputLines := strings.Split(
+		strings.Trim(puzzleInput, "\n"), "\n",
+	)
+
+	return puzzleInputLines, nil
 }
 
 func main() {
