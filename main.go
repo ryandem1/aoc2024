@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"time"
 )
 
 const (
@@ -66,13 +67,16 @@ func main() {
 		log.Fatalf("invalid puzzle: '%s'", *puzzleFlag)
 	}
 
+	now := time.Now()
 	answer, err := puzzle(*inputFlag)
+	elapsed := time.Since(now)
 
 	if err != nil {
 		panic(err)
 	}
 	log.Printf(
-		"Answer for '%s' with input file '%s' is: '%s'\n",
+		"Elapsed: %s Answer for '%s' with input file '%s' is: '%s'\n",
+		elapsed,
 		*puzzleFlag,
 		*inputFlag,
 		answer,
