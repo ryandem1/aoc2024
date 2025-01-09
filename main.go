@@ -59,6 +59,7 @@ func main() {
 
 	puzzle, ok := map[string]func(string)(string, error) {
 		"day1part1": Day1Part1,
+		"day1part2": Day1Part2,
 	}[*puzzleFlag]
 
 	if !ok {
