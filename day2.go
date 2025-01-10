@@ -1,13 +1,14 @@
 package main
 
 import (
+	"github.com/ryandem1/aoc2024/common"
 	"math"
 	"strconv"
 	"strings"
 )
 
 func parseReportsFromPuzzleInput(puzzleInputName string) ([][]int, error) {
-	puzzleInputLines, err := GetPuzzleInputByLines(puzzleInputName)
+	puzzleInputLines, err := common.GetPuzzleInputByLines(puzzleInputName)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +92,7 @@ func Day2Part2(puzzleInputName string) (string, error) {
 
 		safe := false
 		for i := range report {
-			alteredReport := CopySliceWithIndexExcluded(report, i)
+			alteredReport := common.CopySliceWithIndexExcluded(report, i)
 			if isReportSafe(alteredReport) {
 				safe = true
 				break

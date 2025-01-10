@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/ryandem1/aoc2024/common"
 	"math"
 	"sort"
 	"strconv"
@@ -11,7 +12,7 @@ import (
 // parseLeftAndRightList will parse the left and right list of
 // location IDs from the puzzle input.
 func parseLeftAndRightList(puzzleInputName string) ([]int, []int, error) {
-	puzzleInputLines, err := GetPuzzleInputByLines(puzzleInputName)
+	puzzleInputLines, err := common.GetPuzzleInputByLines(puzzleInputName)
 	if err != nil {
 		return nil, nil, err
 	}
