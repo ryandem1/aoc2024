@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/ryandem1/aoc2024/common"
+	"slices"
+	"sort"
 	"strconv"
 )
 
@@ -128,5 +130,41 @@ func Day4Part1(puzzleInputName string) (string, error) {
 
 
 func Day4Part2(puzzleInputName string) (string, error) {
-	return puzzleInputName, nil
+	puzzleInputLines, err := common.GetPuzzleInputByLines(puzzleInputName)
+	if err != nil {
+		return stringErrorValue, err
+	}
+	numXmas := 0
+	crossLetters := []string{"M", "S"}  // must be only 2 letters
+
+	for i, line := range puzzleInputLines {
+		for j := range line {
+			if line[j] == 'A' {
+				rightUnbound := j + 1 < len(line)
+				leftUnbound := j - 1 >= 0
+				bottomUnbound := i + 1 < len(puzzleInputLines)
+				topUnbound := i - 1 >= 0
+
+				if !(topUnbound && bottomUnbound && leftUnbound && rightUnbound) {
+					continue
+				}
+				topRightChar := puzzleInputLines[i-1][j+1]
+				topLeftChar := puzzleInputLines[i-1][j-1]
+				bottomRightChar := puzzleInputLines[i+1][j+1]
+				bottomLeftChar := puzzleInputLines[i+1][j-1]
+
+				cross1 := []string{string(bottomLeftChar), string(topRightChar)}
+				cross2 := []string{string(topLeftChar), string(bottomRightChar)}
+
+				sort.Strings(cross1)
+				sort.Strings(cross2)
+
+				if slices.Equal(cross1, crossLetters) && slices.Equal(cross2, crossLetters) {
+					numXmas++
+				}
+			}
+		}
+	}
+
+	return strconv.Itoa(numXmas), nil
 }
