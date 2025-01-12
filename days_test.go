@@ -58,6 +58,18 @@ func TestAllDays(t *testing.T) {
 			puzzleInputName: "day4example",
 			correctAnswer: "9",
 		},
+		{
+			name:          "Day5Part1Example",
+			puzzleFunc:      Day5Part1,
+			puzzleInputName: "day5example",
+			correctAnswer: "153",
+		},
+		{
+			name:          "Day5Part2Example",
+			puzzleFunc:      Day5Part2,
+			puzzleInputName: "day5example",
+			correctAnswer: "153",
+		},
 	}
 
 	for _, tc := range testCases {

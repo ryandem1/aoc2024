@@ -33,6 +33,8 @@ func main() {
 		"day3part2": Day3Part2,
 		"day4part1": Day4Part1,
 		"day4part2": Day4Part2,
+		"day5part1": Day5Part1,
+		"day5part2": Day5Part2,
 	}[*puzzleFlag]
 
 	if !ok {
